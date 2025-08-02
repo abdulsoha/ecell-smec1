@@ -26,7 +26,7 @@ const About = () => {
     {
       icon: <Target className="w-8 h-8" />,
       title: "Mission Driven",
-      description: "Fostering entrepreneurial mindset among students with innovative solutions"
+      description: "To provide a dynamic platform through events, mentorship, and resources that encourages creativity, collaboration, and the creation of sustainable ventures."
     },
     {
       icon: <Users className="w-8 h-8" />,
@@ -63,9 +63,7 @@ const About = () => {
           <p className={`text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            E-Cell, IIT Kanpur aims to induce an entrepreneurial mindset into the students and air an innovative streak in them. 
-            We are here to water the 'Ideas' in the bud and help them bloom into impactful endeavors through networking student 
-            enterprises from campus to incubators, seeding funds and angel investors to transform the newly proposed ideas into successful start-ups.
+            The Entrepreneurship Cell of St. Martin's Engineering College is committed to fostering innovation and an entrepreneurial mindset among students. Through events, workshops, mentorship, and collaboration, we encourage students to transform ideas into impactful startups and contribute to a vibrant culture of innovation on campus.
           </p>
         </div>
 

@@ -1,9 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import About from "@/components/About";
-import Initiatives from "@/components/Initiatives";
-import Events from "@/components/Events";
-import Sponsors from "@/components/Sponsors";
+import UpcomingEvents from "@/components/UpcomingEvents";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -13,9 +11,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <About />
-      <Initiatives />
-      <Events />
-      <Sponsors />
+      <UpcomingEvents />
       <Contact />
       <Footer />
     </div>

@@ -52,6 +52,9 @@ const HeroSection = () => {
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-hero-text-primary">
             Starts Here
           </h1>
+          <p className="text-xl md:text-2xl text-hero-text-secondary mt-6 font-medium animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            Igniting Ideas, Empowering Entrepreneurs, Shaping Futures.
+          </p>
         </div>
 
         {/* Subheading */}

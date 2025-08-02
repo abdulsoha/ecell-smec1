@@ -23,36 +23,26 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const teamMembers = [
+  const teamCategories = [
     {
-      name: "Anuj Agrawal",
-      role: "Overall Coordinator",
-      image: "AA"
+      name: "Strategic Core",
+      image: "/lovable-uploads/c61e204f-0d53-4555-b497-fac8917e4180.png"
     },
     {
-      name: "Aryan Mittal",
-      role: "Overall Coordinator", 
-      image: "AM"
+      name: "Technical Team",
+      image: "/lovable-uploads/d98f8a21-d865-4320-a054-995f05362825.png"
     },
     {
-      name: "Kalpak Agrawal",
-      role: "Head Events",
-      image: "KA"
+      name: "Design Team",
+      image: "/lovable-uploads/ed2dd08c-33fd-4927-b2d2-0bcc9c5da8ce.png"
     },
     {
-      name: "Himanshu",
-      role: "Head Events",
-      image: "H"
+      name: "Social Media Team",
+      image: "/lovable-uploads/96d8fda2-03c0-4dfa-be6a-cb5a538b5d2d.png"
     },
     {
-      name: "Gaurav Tripathi",
-      role: "Head Events",
-      image: "GT"
-    },
-    {
-      name: "Aakriti Prajapati",
-      role: "Head Startup Development",
-      image: "AP"
+      name: "Marketing Team",
+      image: "/lovable-uploads/daa0d4dd-844a-4d69-869c-393b6e3e541c.png"
     }
   ];
 
@@ -60,19 +50,19 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      content: "contact@ecelliitk.org",
-      link: "mailto:contact@ecelliitk.org"
+      content: "ecell.smec@gmail.com",
+      link: "mailto:ecell.smec@gmail.com"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      content: "+91 98765 43210",
-      link: "tel:+919876543210"
+      content: "+91 6304052967",
+      link: "tel:+916304052967"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
-      content: "IIT Kanpur, UP 208016",
+      content: "St. Martin's Engineering College, Sy. No.98 & 100, Dhulapally Road, Dhulapally, Near Kompally, Medchal–Malkajgiri district, Secunderabad-500 100. Telangana, India",
       link: "#"
     }
   ];
@@ -196,24 +186,6 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Office Hours */}
-            <div className="p-6 rounded-lg bg-primary/5 border border-primary/20">
-              <h4 className="font-semibold text-foreground mb-3">Office Hours</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div className="flex justify-between">
-                  <span>Monday - Friday:</span>
-                  <span>9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday:</span>
-                  <span>10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday:</span>
-                  <span>Closed</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -226,20 +198,21 @@ const Contact = () => {
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {teamMembers.map((member, index) => (
+            {teamCategories.map((category, index) => (
               <div
                 key={index}
                 className="text-center p-6 rounded-2xl bg-background/80 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 group"
               >
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl mb-4 mx-auto group-hover:bg-primary/20 transition-colors">
-                  {member.image}
+                <div className="mb-4 mx-auto group-hover:scale-105 transition-transform">
+                  <img 
+                    src={category.image} 
+                    alt={category.name}
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
                 </div>
-                <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {member.name}
+                <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {category.name}
                 </h4>
-                <p className="text-sm text-muted-foreground">
-                  {member.role}
-                </p>
               </div>
             ))}
           </div>

@@ -1,25 +1,28 @@
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <Facebook className="w-5 h-5" />, href: "#", label: "Facebook" },
-    { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
-    { icon: <Instagram className="w-5 h-5" />, href: "#", label: "Instagram" },
-    { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
-    { icon: <Youtube className="w-5 h-5" />, href: "#", label: "YouTube" },
+    { 
+      icon: <Instagram className="w-5 h-5" />, 
+      href: "https://www.instagram.com/ecell.smec/", 
+      label: "Instagram" 
+    },
+    { 
+      icon: <Linkedin className="w-5 h-5" />, 
+      href: "https://www.linkedin.com/in/e-cell-smec-336443378?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      label: "LinkedIn" 
+    },
   ];
 
   const quickLinks = [
     { name: "About", href: "#about" },
-    { name: "Initiatives", href: "#initiatives" },
-    { name: "Events", href: "#events" },
-    { name: "Sponsors", href: "#sponsors" },
+    { name: "Upcoming Events", href: "#upcoming-events" },
     { name: "Contact", href: "#contact" },
   ];
 
   const programs = [
     { name: "E-Summit", href: "#" },
-    { name: "TEDx IIT Kanpur", href: "#" },
+    { name: "TEDx SMEC", href: "#" },
     { name: "UpStart", href: "#" },
     { name: "Startup Masterclass", href: "#" },
     { name: "Campus Hangouts", href: "#" },
@@ -42,7 +45,7 @@ const Footer = () => {
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-primary mb-4">E-Cell</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Entrepreneurship Cell, IIT Kanpur - Fostering innovation and nurturing 
+                Entrepreneurship Cell, St. Martin's Engineering College - Fostering innovation and nurturing 
                 the next generation of entrepreneurs through cutting-edge resources, 
                 mentorship, and community building.
               </p>
@@ -56,6 +59,8 @@ const Footer = () => {
                   <a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-lg hover:bg-primary/10"
                   >
@@ -112,8 +117,12 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-muted-foreground text-sm">
-                    IIT Kanpur, Kalyanpur<br />
-                    Kanpur, Uttar Pradesh 208016
+                    St. Martin's Engineering College<br />
+                    Sy. No.98 & 100, Dhulapally Road,<br />
+                    Dhulapally, Near Kompally,<br />
+                    Medchal–Malkajgiri district<br />
+                    Secunderabad-500 100.<br />
+                    Telangana, India
                   </p>
                 </div>
               </div>
@@ -121,20 +130,20 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+916304052967"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  +91 98765 43210
+                  +91 6304052967
                 </a>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
                 <a
-                  href="mailto:contact@ecelliitk.org"
+                  href="mailto:ecell.smec@gmail.com"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  contact@ecelliitk.org
+                  ecell.smec@gmail.com
                 </a>
               </div>
             </div>
@@ -169,7 +178,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground">
             <div className="mb-2 md:mb-0">
               <p>
-                © {new Date().getFullYear()} Entrepreneurship Cell, IIT Kanpur. All rights reserved.
+                © {new Date().getFullYear()} Entrepreneurship Cell, St. Martin's Engineering College. All rights reserved.
               </p>
             </div>
             
