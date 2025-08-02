@@ -1,9 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-import { Calendar, Clock, Users, Lightbulb } from "lucide-react";
+import { Calendar, Clock, Users, Lightbulb, ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const UpcomingEvents = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [expandedEvents, setExpandedEvents] = useState<number[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const toggleEvent = (index: number) => {
+    setExpandedEvents(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -155,24 +165,55 @@ const UpcomingEvents = () => {
               }`}
               style={{ transitionDelay: `${400 + index * 100}ms` }}
             >
-              <div className="flex items-center mb-4">
-                <div className="text-primary mr-3">
-                  {event.icon}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <div className="text-primary mr-3">
+                    {event.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">{event.month}</h3>
+                    <p className="text-sm text-primary font-medium">"{event.theme}"</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">{event.month}</h3>
-                  <p className="text-sm text-primary font-medium">"{event.theme}"</p>
+                <div className="ml-2">
+                  {index === 0 ? (
+                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+                      Ongoing
+                    </span>
+                  ) : (
+                    <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
+                      Coming Soon
+                    </span>
+                  )}
                 </div>
               </div>
               
-              <ul className="space-y-3">
-                {event.activities.map((activity, actIndex) => (
-                  <li key={actIndex} className="text-sm text-muted-foreground flex items-start">
-                    <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{activity}</span>
-                  </li>
-                ))}
-              </ul>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => toggleEvent(index)}
+                className="w-full mb-4 flex items-center justify-center"
+              >
+                View Details
+                {expandedEvents.includes(index) ? (
+                  <ChevronUp className="ml-2 w-4 h-4" />
+                ) : (
+                  <ChevronDown className="ml-2 w-4 h-4" />
+                )}
+              </Button>
+              
+              <div className={`overflow-hidden transition-all duration-500 ${
+                expandedEvents.includes(index) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+              }`}>
+                <ul className="space-y-3">
+                  {event.activities.map((activity, actIndex) => (
+                    <li key={actIndex} className="text-sm text-muted-foreground flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>{activity}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

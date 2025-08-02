@@ -23,28 +23,6 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const teamCategories = [
-    {
-      name: "Strategic Core",
-      image: "/lovable-uploads/c61e204f-0d53-4555-b497-fac8917e4180.png"
-    },
-    {
-      name: "Technical Team",
-      image: "/lovable-uploads/d98f8a21-d865-4320-a054-995f05362825.png"
-    },
-    {
-      name: "Design Team",
-      image: "/lovable-uploads/ed2dd08c-33fd-4927-b2d2-0bcc9c5da8ce.png"
-    },
-    {
-      name: "Social Media Team",
-      image: "/lovable-uploads/96d8fda2-03c0-4dfa-be6a-cb5a538b5d2d.png"
-    },
-    {
-      name: "Marketing Team",
-      image: "/lovable-uploads/daa0d4dd-844a-4d69-869c-393b6e3e541c.png"
-    }
-  ];
 
   const contactInfo = [
     {
@@ -63,7 +41,7 @@ const Contact = () => {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
       content: "St. Martin's Engineering College, Sy. No.98 & 100, Dhulapally Road, Dhulapally, Near Kompally, Medchal–Malkajgiri district, Secunderabad-500 100. Telangana, India",
-      link: "#"
+      link: "https://www.google.com/maps/place/St.Martin's+Engineering+College/@17.5414649,78.4696241,17z/data=!3m1!4b1!4m10!1m2!2m1!1sst.martin's+engineering+college!3m6!1s0x3bcb8ff57a807d8d:0x9922a435110db323!8m2!3d17.541465!4d78.474495!15sCh9zdC5tYXJ0aW4ncyBlbmdpbmVlcmluZyBjb2xsZWdlkgEHY29sbGVnZaoBSBABMh8QASIb2hcf1bLy6dqETjgPqc_GjSGwX1hMtq5SwcZmMiMQAiIfc3QgbWFydGluJ3MgZW5naW5lZXJpbmcgY29sbGVnZeABAA!16s%2Fm%2F07k5bnh?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D"
     }
   ];
 
@@ -171,6 +149,8 @@ const Contact = () => {
                 <a
                   key={index}
                   href={info.link}
+                  target={info.title === "Visit Us" ? "_blank" : undefined}
+                  rel={info.title === "Visit Us" ? "noopener noreferrer" : undefined}
                   className="flex items-center p-4 rounded-lg bg-background/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105 group"
                 >
                   <div className="text-primary mr-4 group-hover:scale-110 transition-transform">
@@ -189,34 +169,6 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Team Section */}
-        <div className={`transition-all duration-1000 delay-800 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <h3 className="text-3xl font-bold text-foreground mb-8 text-center">
-            Meet Our Team
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {teamCategories.map((category, index) => (
-              <div
-                key={index}
-                className="text-center p-6 rounded-2xl bg-background/80 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 group"
-              >
-                <div className="mb-4 mx-auto group-hover:scale-105 transition-transform">
-                  <img 
-                    src={category.image} 
-                    alt={category.name}
-                    className="w-full h-64 object-cover rounded-lg"
-                  />
-                </div>
-                <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                  {category.name}
-                </h4>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* FAQ Section */}
         <div className={`mt-20 text-center transition-all duration-1000 delay-1000 ${

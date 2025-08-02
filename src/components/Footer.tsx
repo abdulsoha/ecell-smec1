@@ -1,6 +1,25 @@
+import { useState } from "react";
 import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setIsSubscribed(true);
+      setShowNotification(true);
+      setEmail("");
+      
+      // Hide notification after 3 seconds
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 3000);
+    }
+  };
+
   const socialLinks = [
     { 
       icon: <Instagram className="w-5 h-5" />, 
@@ -160,16 +179,22 @@ const Footer = () => {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="px-4 py-2 rounded-lg border border-primary/20 bg-card focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm min-w-[250px]"
+                required
               />
-              <button className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
-                Subscribe
+              <button 
+                type="submit"
+                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+              >
+                {isSubscribed ? "Subscribed" : "Subscribe"}
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
@@ -209,6 +234,13 @@ const Footer = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
       </button>
+
+      {/* Notification */}
+      {showNotification && (
+        <div className="fixed bottom-24 right-8 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in-right">
+          Subscribed successfully!
+        </div>
+      )}
     </footer>
   );
 };

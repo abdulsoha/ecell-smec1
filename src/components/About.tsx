@@ -89,29 +89,6 @@ const About = () => {
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {[
-            { number: "500+", label: "Students Impacted" },
-            { number: "50+", label: "Startups Launched" },
-            { number: "100+", label: "Events Organized" }
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className={`p-6 transition-all duration-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${800 + index * 100}ms` }}
-            >
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                {stat.number}
-              </div>
-              <div className="text-lg text-muted-foreground">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

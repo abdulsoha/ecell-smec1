@@ -40,7 +40,7 @@ const HeroSection = () => {
         {/* Top Badge */}
         <div className="inline-flex items-center px-6 py-3 rounded-full glass-morphism mb-8 animate-slide-up">
           <span className="text-sm font-medium text-primary">
-            Entrepreneurship Cell
+            E Cell SMEC
           </span>
         </div>
 
@@ -57,17 +57,23 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* Subheading */}
-        <p className="text-lg md:text-xl text-hero-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          Empowering the next generation of entrepreneurs with cutting-edge resources, mentorship, and a vibrant community of innovators.
-        </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up" style={{ animationDelay: '0.6s' }}>
           <Button variant="hero-primary" size="lg" className="px-8 py-4 text-lg">
             Join Our Community
           </Button>
-          <Button variant="hero-secondary" size="lg" className="px-8 py-4 text-lg">
+          <Button 
+            variant="hero-secondary" 
+            size="lg" 
+            className="px-8 py-4 text-lg"
+            onClick={() => {
+              const eventsSection = document.getElementById('upcoming-events');
+              if (eventsSection) {
+                eventsSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             Explore Events
           </Button>
         </div>
