@@ -40,7 +40,7 @@ const HeroSection = () => {
         {/* Top Badge */}
         <div className="inline-flex items-center px-6 py-3 rounded-full glass-morphism mb-8 animate-slide-up">
           <span className="text-sm font-medium text-primary">
-            E Cell SMEC
+            Entrepreneur Cell
           </span>
         </div>
 

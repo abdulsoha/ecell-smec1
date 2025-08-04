@@ -2,9 +2,11 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import About from "@/components/About";
 import UpcomingEvents from "@/components/UpcomingEvents";
-import SocialFollow from "@/components/SocialFollow";
-import Contact from "@/components/Contact";
-import Team from "@/components/Team";
+import GuidingForce from "@/components/GuidingForce";
+import NewTeam from "@/components/NewTeam";
+import Gallery from "@/components/Gallery";
+import FAQ from "@/components/FAQ";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,9 +16,11 @@ const Index = () => {
       <HeroSection />
       <About />
       <UpcomingEvents />
-      <SocialFollow />
-      <Team />
-      <Contact />
+      <GuidingForce />
+      <NewTeam />
+      <Gallery />
+      <FAQ />
+      <ContactForm />
       <Footer />
     </div>
   );

@@ -46,7 +46,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-card relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-8 bg-card relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-primary/20"></div>
@@ -58,7 +58,7 @@ const About = () => {
           <h2 className={`text-4xl md:text-6xl font-bold text-foreground mb-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            About <span className="text-primary">E-Cell</span>
+            About <span className="text-primary">E-Cell SMEC</span>
           </h2>
           <p className={`text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

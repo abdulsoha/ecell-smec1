@@ -1,10 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Send, User, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import emailjs from '@emailjs/browser';
+import Subscribe from "./Subscribe";
 
-const Contact = () => {
+interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+const ContactForm = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormData>();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,6 +36,31 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const templateParams = {
+        to_email: 'abdulsameer66949@gmail.com',
+        from_name: `${data.firstName} ${data.lastName}`,
+        from_email: data.email,
+        subject: data.subject,
+        message: data.message,
+        reply_to: data.email
+      };
+
+      await emailjs.send(
+        'service_ecell_smec', // You'll need to set up EmailJS service
+        'template_contact', // You'll need to create this template
+        templateParams,
+        'your_public_key' // You'll need to add your public key
+      );
+
+      toast.success("Message sent successfully!");
+      reset();
+    } catch (error) {
+      console.error('Contact form error:', error);
+      toast.error("Failed to send message. Please try again.");
+    }
+  };
 
   const contactInfo = [
     {
@@ -74,7 +112,7 @@ const Contact = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             <h3 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
@@ -84,7 +122,11 @@ const Contact = () => {
                     type="text"
                     className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                     placeholder="John"
+                    {...register("firstName", { required: "First name is required" })}
                   />
+                  {errors.firstName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
@@ -94,7 +136,11 @@ const Contact = () => {
                     type="text"
                     className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                     placeholder="Doe"
+                    {...register("lastName", { required: "Last name is required" })}
                   />
+                  {errors.lastName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
+                  )}
                 </div>
               </div>
               
@@ -106,7 +152,17 @@ const Contact = () => {
                   type="email"
                   className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                   placeholder="john@example.com"
+                  {...register("email", { 
+                    required: "Email is required",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Invalid email address"
+                    }
+                  })}
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                )}
               </div>
 
               <div>
@@ -117,7 +173,11 @@ const Contact = () => {
                   type="text"
                   className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
                   placeholder="How can we help you?"
+                  {...register("subject", { required: "Subject is required" })}
                 />
+                {errors.subject && (
+                  <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>
+                )}
               </div>
 
               <div>
@@ -128,10 +188,14 @@ const Contact = () => {
                   rows={5}
                   className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all resize-none"
                   placeholder="Tell us about your idea or query..."
+                  {...register("message", { required: "Message is required" })}
                 ></textarea>
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                )}
               </div>
 
-              <Button variant="hero-primary" size="lg" className="w-full">
+              <Button type="submit" variant="hero-primary" size="lg" className="w-full">
                 Send Message
                 <Send className="ml-2 w-4 h-4" />
               </Button>
@@ -166,26 +230,8 @@ const Contact = () => {
               ))}
             </div>
 
-          </div>
-        </div>
-
-
-        {/* FAQ Section */}
-        <div className={`mt-20 text-center transition-all duration-1000 delay-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20 max-w-2xl mx-auto">
-            <MessageSquare className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Frequently Asked Questions
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              Have questions about joining E-Cell, our events, or startup programs? 
-              Check out our comprehensive FAQ section.
-            </p>
-            <Button variant="outline" size="lg">
-              View FAQ
-            </Button>
+            {/* Subscribe Section */}
+            <Subscribe />
           </div>
         </div>
       </div>
@@ -193,4 +239,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactForm;
