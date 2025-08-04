@@ -46,7 +46,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-8 bg-card relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-4 bg-card relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-primary/20"></div>

@@ -19,8 +19,8 @@ const Index = () => {
       <GuidingForce />
       <NewTeam />
       <Gallery />
-      <FAQ />
       <ContactForm />
+      <FAQ />
       <Footer />
     </div>
   );

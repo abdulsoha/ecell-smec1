@@ -48,7 +48,7 @@ const Navbar = () => {
               }}
               className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
             >
-              E-Cell
+              E-Cell SMEC
             </a>
           </div>
 

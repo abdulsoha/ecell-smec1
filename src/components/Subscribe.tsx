@@ -25,7 +25,7 @@ const Subscribe = () => {
 
 Welcome aboard!
 
-We're thrilled to have you as the newest member of our E-Cell community. 🚀 Your subscription means you'll now be the first to know about our upcoming events, startup opportunities, workshops, and all things entrepreneurial!
+We're thrilled to have you as the newest member of our E-Cell SMEC community. 🚀 Your subscription means you'll now be the first to know about our upcoming events, startup opportunities, workshops, and all things entrepreneurial!
 
 Whether you're a budding entrepreneur, an innovator, or someone curious about the startup world – you're in the right place. 🙌
 

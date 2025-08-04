@@ -24,71 +24,71 @@ const NewTeam = () => {
   const teamMembers = {
     Leadership: [
       {
-        name: "Team Member",
-        department: "Computer Science",
-        role: "President",
+        name: "Rama Krishna",
+        department: "CSE (AI & ML)",
+        role: "Chief",
         image: "/lovable-uploads/87292a28-bca1-43b2-b882-4c826f91cde0.png"
+      },
+      {
+        name: "Nikitha Varma",
+        department: "CSE (AI & ML)",
+        role: "Vice Chief",
+        image: "/lovable-uploads/d9f3d167-b920-4172-aba7-88337a7fab17.png"
+      },
+      {
+        name: "Khaja Ghouse Khan",
+        department: "CSG",
+        role: "Startup Advisor / Strategic Advisor",
+        image: "/lovable-uploads/ba7a85cc-49f6-4d8f-86eb-ae7a5ac35455.png"
       }
     ],
     "Technical Team": [
       {
-        name: "Team Member",
+        name: "Technical Team Member",
         department: "Computer Science",
         role: "Technical Lead",
-        image: "/lovable-uploads/d9f3d167-b920-4172-aba7-88337a7fab17.png"
+        image: "/lovable-uploads/d7b290fb-1f28-4157-9650-6780abaa691b.png"
       },
       {
-        name: "Team Member",
+        name: "Technical Team Member",
         department: "Electronics",
         role: "Developer",
-        image: "/lovable-uploads/ba7a85cc-49f6-4d8f-86eb-ae7a5ac35455.png"
+        image: "/lovable-uploads/11fdb1f6-a63f-44e5-82eb-971a84a8f304.png"
       }
     ],
     "Design Team": [
       {
-        name: "Team Member",
+        name: "Design Team Member",
         department: "Design",
         role: "Creative Head",
-        image: "/lovable-uploads/d7b290fb-1f28-4157-9650-6780abaa691b.png"
+        image: "/lovable-uploads/624c10cf-5fd0-4d78-a9f2-61e30c4e3f01.png"
       },
       {
-        name: "Team Member",
+        name: "Design Team Member",
         department: "Design",
         role: "UI/UX Designer",
-        image: "/lovable-uploads/11fdb1f6-a63f-44e5-82eb-971a84a8f304.png"
+        image: "/lovable-uploads/5b138093-77f6-4926-a324-9c8db45759bb.png"
       }
     ],
     "Social Media Team": [
       {
-        name: "Team Member",
+        name: "Social Media Team Member",
         department: "Marketing",
         role: "Social Media Manager",
-        image: "/lovable-uploads/624c10cf-5fd0-4d78-a9f2-61e30c4e3f01.png"
+        image: "/lovable-uploads/55424e14-da8f-43a5-b556-f36da0467f00.png"
       },
       {
-        name: "Team Member",
+        name: "Social Media Team Member",
         department: "Communications",
         role: "Content Creator",
-        image: "/lovable-uploads/5b138093-77f6-4926-a324-9c8db45759bb.png"
+        image: "/lovable-uploads/168d2f2a-e6dd-495f-9ca9-0649a4e4029e.png"
       }
     ],
     "Marketing Team": [
       {
-        name: "Team Member",
+        name: "Marketing Team Member",
         department: "Business",
         role: "Marketing Head",
-        image: "/lovable-uploads/55424e14-da8f-43a5-b556-f36da0467f00.png"
-      },
-      {
-        name: "Team Member",
-        department: "Management",
-        role: "Event Coordinator",
-        image: "/lovable-uploads/168d2f2a-e6dd-495f-9ca9-0649a4e4029e.png"
-      },
-      {
-        name: "Team Member",
-        department: "Operations",
-        role: "Operations Manager",
         image: "/lovable-uploads/14752e47-5a72-4ade-80e3-424a92d24909.png"
       }
     ]

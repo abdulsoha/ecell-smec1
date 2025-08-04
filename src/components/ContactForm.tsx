@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
+import { Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import emailjs from '@emailjs/browser';
-import Subscribe from "./Subscribe";
 
 interface ContactFormData {
   firstName: string;
@@ -16,6 +15,7 @@ interface ContactFormData {
 
 const ContactForm = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormData>();
 
@@ -54,7 +54,8 @@ const ContactForm = () => {
         'your_public_key' // You'll need to add your public key
       );
 
-      toast.success("Message sent successfully!");
+      setIsSubmitted(true);
+      toast.success("Submitted Successfully");
       reset();
     } catch (error) {
       console.error('Contact form error:', error);
@@ -62,26 +63,6 @@ const ContactForm = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email Us",
-      content: "ecell.smec@gmail.com",
-      link: "mailto:ecell.smec@gmail.com"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Call Us",
-      content: "+91 6304052967",
-      link: "tel:+916304052967"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Visit Us",
-      content: "St. Martin's Engineering College, Sy. No.98 & 100, Dhulapally Road, Dhulapally, Near Kompally, Medchal–Malkajgiri district, Secunderabad-500 100. Telangana, India",
-      link: "https://www.google.com/maps/place/St.Martin's+Engineering+College/@17.541465,78.4719201,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb8ff57a807d8d:0x9922a435110db323!8m2!3d17.541465!4d78.474495!16s%2Fm%2F07k5bnh?authuser=0&entry=ttu"
-    }
-  ];
 
   return (
     <section id="contact" ref={sectionRef} className="py-20 bg-card relative overflow-hidden">
@@ -106,7 +87,7 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+        <div className="max-w-2xl mx-auto">
           {/* Contact Form */}
           <div className={`transition-all duration-1000 delay-400 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -195,43 +176,17 @@ const ContactForm = () => {
                 )}
               </div>
 
-              <Button type="submit" variant="hero-primary" size="lg" className="w-full">
-                Send Message
+              <Button 
+                type="submit" 
+                variant="hero-primary" 
+                size="lg" 
+                className="w-full"
+                disabled={isSubmitted}
+              >
+                {isSubmitted ? "Submitted" : "Send Message"}
                 <Send className="ml-2 w-4 h-4" />
               </Button>
             </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className={`transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
-            
-            <div className="space-y-6 mb-8">
-              {contactInfo.map((info, index) => (
-                <a
-                  key={index}
-                  href={info.link}
-                  target={info.title === "Visit Us" ? "_blank" : undefined}
-                  rel={info.title === "Visit Us" ? "noopener noreferrer" : undefined}
-                  className="flex items-center p-4 rounded-lg bg-background/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105 group"
-                >
-                  <div className="text-primary mr-4 group-hover:scale-110 transition-transform">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {info.title}
-                    </h4>
-                    <p className="text-muted-foreground">{info.content}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            {/* Subscribe Section */}
-            <Subscribe />
           </div>
         </div>
       </div>

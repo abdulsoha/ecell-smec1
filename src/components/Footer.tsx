@@ -58,11 +58,11 @@ const Footer = () => {
     <footer className="bg-background border-t border-primary/20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-primary mb-4">E-Cell</h3>
+              <h3 className="text-2xl font-bold text-primary mb-4">E-Cell SMEC</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Entrepreneurship Cell, St. Martin's Engineering College - Fostering innovation and nurturing 
                 the next generation of entrepreneurs through cutting-edge resources, 
@@ -111,31 +111,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Programs */}
-          <div>
-            <h4 className="text-foreground font-semibold mb-6">Our Programs</h4>
-            <ul className="space-y-3">
-              {programs.map((program, index) => (
-                <li key={index}>
-                  <a
-                    href={program.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    {program.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Contact Info */}
           <div>
             <h4 className="text-foreground font-semibold mb-6">Contact Info</h4>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
+              <a
+                href="https://www.google.com/maps/place/St.Martin's+Engineering+College/@17.541465,78.4719201,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb8ff57a807d8d:0x9922a435110db323!8m2!3d17.541465!4d78.474495!16s%2Fm%2F07k5bnh?authuser=0&entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start space-x-3 text-muted-foreground hover:text-primary transition-colors"
+              >
                 <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm">
                     St. Martin's Engineering College<br />
                     Sy. No.98 & 100, Dhulapally Road,<br />
                     Dhulapally, Near Kompally,<br />
@@ -144,7 +133,7 @@ const Footer = () => {
                     Telangana, India
                   </p>
                 </div>
-              </div>
+              </a>
               
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
@@ -179,22 +168,29 @@ const Footer = () => {
               </p>
             </div>
             
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="px-4 py-2 rounded-lg border border-primary/20 bg-card focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm min-w-[200px]"
+                required
+              />
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-primary/20 bg-card focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm min-w-[250px]"
+                className="px-4 py-2 rounded-lg border border-primary/20 bg-card focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm min-w-[200px]"
                 required
               />
               <button 
-                type="submit"
-                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+                onClick={handleSubscribe}
+                disabled={isSubscribed}
+                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium disabled:opacity-50"
               >
                 {isSubscribed ? "Subscribed" : "Subscribe"}
               </button>
-            </form>
+            </div>
           </div>
         </div>
 
@@ -238,7 +234,7 @@ const Footer = () => {
       {/* Notification */}
       {showNotification && (
         <div className="fixed bottom-24 right-8 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in-right">
-          Subscribed successfully!
+          Subscribed Successfully
         </div>
       )}
     </footer>
