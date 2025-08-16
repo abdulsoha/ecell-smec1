@@ -239,10 +239,10 @@ const UpcomingEvents = () => {
                 <Button
                   variant="hero-primary"
                   size="sm"
-                  onClick={() => openRegistration(event.month)}
+                  onClick={() => window.open('https://forms.gle/QTnqyF6hj3JE2fV27', '_blank')}
                   className="flex-1"
                 >
-                  Register
+                  Register Now
                 </Button>
               </div>
               
